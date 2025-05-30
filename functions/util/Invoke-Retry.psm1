@@ -20,7 +20,11 @@ function Invoke-Retry {
         catch {
             $retryCount++
             if ($retryCount -eq $maxRetries) {
-                Write-Verbose "Failed to run code after the maxmimum amount of $maxRetries retries."
+                Write-Verbose "Failed to run code after the maximum of $maxRetries retries."
+                Write-Verbose "Exception Message: $($_.Exception.Message)"
+                Write-Verbose "Script Stack Trace: $($_.ScriptStackTrace)"
+                Write-Verbose $_
+
                 throw $_
             }
             else {
