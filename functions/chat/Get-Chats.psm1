@@ -3,8 +3,8 @@ Param([bool]$verbose)
 $VerbosePreference = if ($verbose) { 'Continue' } else { 'SilentlyContinue' }
 $ProgressPreference = "SilentlyContinue"
 
-function Get-Chats ($clientId, $tenantId) {
-    $link = "https://graph.microsoft.com/v1.0/me/chats"
+function Get-Chats ($clientId, $tenantId, $userID) {
+    $link = "https://graph.microsoft.com/v1.0/users/$userId/chats"
     $chats = @()
 
     $start = Get-Date
